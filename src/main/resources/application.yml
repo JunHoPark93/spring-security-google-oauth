@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  devtools:
+    livereload:
+      enabled: true
+logging:
+  level:
+    org.hibernate.type: trace
