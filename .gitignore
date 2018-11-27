@@ -31,6 +31,7 @@ tmp/**/*
 *.swp
 *~.nib
 local.properties
+local.yml
 .classpath
 .settings/
 .loadpath
@@ -139,3 +140,9 @@ Desktop.ini
 # ESLint
 ######################
 .eslintcache
+
+
+#######
+# personal yaml file
+#######
+/src/main/resources/oauth.yml
