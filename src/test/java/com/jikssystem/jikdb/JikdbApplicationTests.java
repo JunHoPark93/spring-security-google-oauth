@@ -28,7 +28,7 @@ public class JikdbApplicationTests {
                 .then()
                 .statusCode(200)
                 .contentType("text/html")
-                .body(containsString("권한 관리"));
+                .body(containsString("Jiks"));
     }
 
 }
