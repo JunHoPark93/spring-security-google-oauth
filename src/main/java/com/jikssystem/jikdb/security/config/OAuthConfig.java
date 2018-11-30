@@ -21,9 +21,12 @@ import javax.servlet.Filter;
 public class OAuthConfig {
 
     private final OAuth2ClientContext oauth2ClientContext;
+    private final GoogleAuthenticationSuccessHandler googleAuthenticationSuccessHandler;
 
-    public OAuthConfig(OAuth2ClientContext oauth2ClientContext) {
+
+    public OAuthConfig(OAuth2ClientContext oauth2ClientContext, GoogleAuthenticationSuccessHandler googleAuthenticationSuccessHandler) {
         this.oauth2ClientContext = oauth2ClientContext;
+        this.googleAuthenticationSuccessHandler = googleAuthenticationSuccessHandler;
     }
 
     @Bean
@@ -32,6 +35,7 @@ public class OAuthConfig {
         OAuth2RestTemplate oAuth2RestTemplate = new OAuth2RestTemplate(googleClient(), oauth2ClientContext);
         oauth2Filter.setRestTemplate(oAuth2RestTemplate);
         oauth2Filter.setTokenServices(new UserInfoTokenServices(googleResource().getUserInfoUri(), googleClient().getClientId()));
+        oauth2Filter.setAuthenticationSuccessHandler(googleAuthenticationSuccessHandler);
 
         return oauth2Filter;
     }
@@ -45,6 +49,7 @@ public class OAuthConfig {
     @Bean
     @ConfigurationProperties("oauth.resource")
     public ResourceServerProperties googleResource() {
+
         return new ResourceServerProperties();
     }
 
