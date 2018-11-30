@@ -1,4 +1,6 @@
 spring:
+  datasource:
+    data: classpath:schema.sql
   jpa:
     show-sql: true
   h2:
